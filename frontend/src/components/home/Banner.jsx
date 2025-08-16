@@ -10,7 +10,7 @@ const Banner = () => {
             <h1 className="text-center text-4xl font-semibold text-black leading-10">
               Meta Blog
             </h1>
-            <div className="flex justify-center items-center gap-4 mt-3.5 mb-8">
+            <div className="flex justify-center items-center flex-wrap gap-4 mt-3.5 mb-8">
               <Link
                 to="/"
                 className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal text-black hover:text-primary duration-300 leading-6"
@@ -41,8 +41,12 @@ const Banner = () => {
             </h2>
             <div className="flex items-center gap-3.5">
               <img src="images/author.png" alt="author" />
-              <p className="text-white text-base leading-6 font-normal">Tracey Wilson</p>
-              <p className="text-white text-base leading-6 font-normal">August 20, 2024</p>
+              <p className="text-white text-base leading-6 font-normal">
+                Tracey Wilson
+              </p>
+              <p className="text-white text-base leading-6 font-normal">
+                August 20, 2024
+              </p>
             </div>
           </div>
         </div>

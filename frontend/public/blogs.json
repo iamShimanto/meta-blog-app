@@ -1,0 +1,101 @@
+[
+    {
+      "_id": 1,
+      "title": "Understanding the Most Important React Context API",
+      "description": "In this blog, we will explore the React Context API, a powerful tool for managing state across your React applications.",
+      "image": "https://i.ibb.co.com/85LCv5q/blog-1.png",
+      "author": {
+        "name": "Tracey Wilson",
+        "image": "https://i.ibb.co.com/pR80611/author-1.png"
+      },
+      "date": "2024-09-01"
+    },
+    {
+      "_id": 2,
+      "title": "Mastering Tailwind CSS: Most Popular CSS Framework",
+      "description": "Learn how to build responsive and beautiful websites using the Tailwind CSS utility-first framework.",
+      "image": "https://i.ibb.co.com/ZSQXvbd/blog-2.png",
+      "author": {
+        "name": "Jason Francisco",
+        "image": "https://i.ibb.co.com/88Bg9tb/author-2.png"
+      },
+      "date": "2024-08-25"
+    },
+    {
+      "_id": 3,
+      "title": "Building A Modern Web Apps with the Superb Next.js",
+      "description": "Next.js offers server-side rendering, static site generation, and much more for building modern web applications.",
+      "image": "https://i.ibb.co.com/5TY9Gp4/blog-3.png",
+      "author": {
+        "name": "Elizabeth Slavin",
+        "image": "https://i.ibb.co.com/dg7Vvs3/author-3.png"
+      },
+      "date": "2024-08-18"
+    },
+    {
+      "_id": 4,
+      "title": "Getting Started with Framer Motion: Animation Made Easy to Build",
+      "description": "Framer Motion allows you to create powerful animations and interactions easily within your React projects. It opens a new window to interact with your application",
+      "image": "https://i.ibb.co.com/bgDXL0w/blog-4.png",
+      "author": {
+        "name": "Ernie Smith",
+        "image": "https://i.ibb.co.com/SRkb8ss/author-4.png"
+      },
+      "date": "2024-08-10"
+    },
+    {
+      "_id": 5,
+      "title": "JavaScript ES6 Features You Should Know Today!",
+      "description": "ES6 introduced several features that modern JavaScript developers should be familiar with, including arrow functions, template literals, and more.",
+      "image": "https://i.ibb.co.com/pv9mHs2/blog-5.png",
+      "author": {
+        "name": "Eric Smith",
+        "image": "https://i.ibb.co.com/9bj4TBj/author-5.png"
+      },
+      "date": "2024-07-30"
+    },
+    {
+      "_id": 6,
+      "title": "Creating Scalable App with the Most Popular BEM Method",
+      "description": "In this blog, we dive into the Block Element Modifier (BEM) methodology to help create modular and reusable CSS. We will have to write less code that the regular css",
+      "image": "https://i.ibb.co.com/GJb1VfQ/blog-8.png",
+      "author": {
+       "name": "Tracey Wilson",
+        "image": "https://i.ibb.co.com/pR80611/author-1.png"
+      },
+      "date": "2024-07-20"
+    },
+    {
+      "_id": 7,
+      "title": "10 Things You Can Learn from Netflix’s Architecture",
+      "description": "In this blog, we dive into the Netflix’s Architecture to improve your data structure and algorithm knowledge. We will have to write less code",
+      "image": "https://i.ibb.co.com/vJ6Zw0L/blog-7.png",
+      "author": {
+       "name": "Jason Francisco",
+        "image": "https://i.ibb.co.com/88Bg9tb/author-2.png"
+      },
+      "date": "2024-07-20"
+    },
+    {
+      "_id": 8,
+      "title": "Global Talent Visa: How to Move to the UK Without an Employer",
+      "description": "If you want to relocate to the UK, this blog is for you. In this blog, I will share information about the Global Talent Visa (GTV). I am a GTV holder and did this without the help of any lawyers or agencies.",
+      "image": "https://i.ibb.co.com/GJb1VfQ/blog-8.png",
+      "author": {
+        "name": "Elizabeth Slavin",
+        "image": "https://i.ibb.co.com/dg7Vvs3/author-3.png"
+      },
+      "date": "2024-07-20"
+    },
+    {
+      "_id": 9,
+      "title": "9 open-source gems to become the ultimate developer🔥 🚀",
+      "description": "I’ve built AI agents before, but when it came to connecting with third-party services like GitHub, Slack, and Jira for complex AI automation, I couldn't find a single tool that worked—until I discovered Composio.",
+      "image": "https://i.ibb.co.com/NjGYrjv/blog-9.png",
+      "author": {
+        "name": "Eric Smith",
+        "image": "https://i.ibb.co.com/9bj4TBj/author-5.png"
+      },
+      "date": "2024-07-20"
+    }
+  ]

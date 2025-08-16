@@ -1,8 +1,13 @@
 import React from 'react'
+import Banner from '../components/home/Banner'
+import BlogList from '../components/blog/BlogList'
 
 const Blogs = () => {
   return (
-    <div>Blogs</div>
+    <>
+      <Banner />
+      <BlogList/>
+    </>
   )
 }
 
