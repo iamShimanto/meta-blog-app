@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+@theme{
+  --color-brand : #4B6BFB;
+  --color-primary : #1F2937;
+  --color-secondary : #6B7280;
+  --color-navColor : #374151;
+}
+
+
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
