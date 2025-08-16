@@ -1,45 +1,40 @@
 import React, { useEffect, useState } from "react";
+import BlogCard from "./BlogCard";
 
 const BlogList = () => {
   const [blogData, setBlogData] = useState([]);
+  const [showBlogs, setShowBlogs] = useState(6);
+  const [searchTerm] = useState("");
 
   useEffect(() => {
     fetch("blogs.json")
       .then((response) => response.json())
       .then((data) => setBlogData(data));
   }, []);
-  console.log(blogData);
+
+  const filterBlogs = blogData.filter(
+    (blog) =>
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      blog.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      blog.author.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleMoreBlog = () => {
+    setShowBlogs(showBlogs + 3);
+  };
+
   return (
     <>
       <section>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
-            {blogData.map((item) => (
-              <div key={item._id} className="p-4.25 shadow-md">
-                <img src={item.image} alt="image" className="w-full h-60" />
-                <p className="text-brand px-3 py-1.5 bg-[rgba(75,107,251,0.05)] w-fit rounded-md mt-4">
-                  Technology
-                </p>
-                <h3 className="text-primary text-xl font-semibold leading-7 mt-3.5 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-secondary text-base font-normal leading-6">
-                  {item.description}
-                </p>
-                <div className="flex items-center gap-3">
-                  <img src={item.author.image} alt="" />
-                  <div>
-                    <p className="text-sm font-normal text-[#4B5563] leading-5">
-                      {item.author.name}
-                    </p>
-                    <span className="text-xs font-normal text-[#9CA3AF] leading-4">
-                      {item.date}
-                    </span>
-                  </div>
-                </div>
-              </div>
+            {filterBlogs.slice(0, showBlogs).map((item) => (
+              <BlogCard key={item._id} item={item} />
             ))}
           </div>
+          {showBlogs < filterBlogs.length && (
+            <button onClick={handleMoreBlog} className="px-4 py-2 bg-brand rounded-lg text-lg font-semibold text-white cursor-pointer hover:bg-brand/80 duration-300 my-5 w-fit flex justify-center mx-auto">Show More</button>
+          )}
         </div>
       </section>
     </>
