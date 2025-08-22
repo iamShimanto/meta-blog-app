@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="px-11.25 py-4.5 flex items-center justify-between shadow-2xl sticky top-0 bg-slate-50">
+      <nav className="px-11.25 py-4.5 flex items-center justify-between shadow-2xl sticky top-0 bg-slate-50 z-50">
         <div className="flex items-center gap-1.5">
           <img src="images/logo.png" alt="logo" />
         </div>
