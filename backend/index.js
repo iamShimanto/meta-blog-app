@@ -1,16 +1,16 @@
 require("dotenv").config();
 const express = require("express");
+const dbConfig = require("./dbConfig/db");
 const app = express();
 const port = process.env.PORT || 3000;
-const mongoose = require("mongoose");
+const blogRoutes = require("./src/routes/blogRoutes");
 
-async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
-}
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-main()
-  .then(() => console.log("mongodb connected"))
-  .catch((err) => console.log(err));
+dbConfig();
+
+app.use("/blogs", blogRoutes);
 
 app.get("/", (req, res) => {
   res.send("server is running");
