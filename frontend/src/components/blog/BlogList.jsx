@@ -7,9 +7,9 @@ const BlogList = () => {
   const [searchTerm] = useState("");
 
   useEffect(() => {
-    fetch("blogs.json")
+    fetch("http://localhost:5000/blogs")
       .then((response) => response.json())
-      .then((data) => setBlogData(data));
+      .then((data) => setBlogData(data.blog));
   }, []);
 
   const filterBlogs = blogData.filter(

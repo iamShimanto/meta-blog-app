@@ -5,7 +5,7 @@ const BlogCard = ({ item }) => {
   return (
     <>
       <Link to={`/blogs/${item?._id}`}>
-        <div className="p-4.25 shadow-md">
+        <div className="p-4.25 shadow-md h-135 flex flex-col justify-between">
           <img
             src={item.image}
             alt="image"
@@ -15,7 +15,8 @@ const BlogCard = ({ item }) => {
             Technology
           </p>
           <h3 className="text-primary text-xl font-semibold leading-7 mt-3.5 mb-3">
-            {item.title}
+            {item.title.substring(0, 60)}
+            {item?.title.length > 60 && " ..."}
           </h3>
           <p className="text-secondary text-base font-normal sm:h-16">
             {item.description.substring(0, 130)}...
