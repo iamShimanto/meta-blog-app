@@ -31,7 +31,7 @@ const Banner = () => {
               </Link>
             </div>
           </div>
-          <div className="bg-[url(images/banner.png)] bg-no-repeat bg-cover pl-5 pb-5 pt-30 sm:pt-65">
+          <div className="bg-[url(/images/banner.png)] bg-no-repeat bg-cover pl-5 pb-5 pt-30 sm:pt-65">
             <h3 className="bg-brand px-7 py-1.5 text-white leading-6 w-fit rounded-md">
               Technology
             </h3>

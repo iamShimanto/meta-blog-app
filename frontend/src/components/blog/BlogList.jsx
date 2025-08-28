@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import axios from "axios";
+import IsLoading from "../loading/IsLoading";
 
 const BlogList = () => {
   const [blogData, setBlogData] = useState([]);
   const [showBlogs, setShowBlogs] = useState(6);
   const [searchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    fetch("http://localhost:5000/blogs")
-      .then((response) => response.json())
-      .then((data) => setBlogData(data.blog));
+    try {
+      (async () => {
+        setIsLoading(true);
+        const res = await axios.get("http://localhost:5000/blogs");
+        const data = res.data.blog;
+        setBlogData(data);
+      })();
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
   }, []);
 
   const filterBlogs = blogData.filter(
@@ -27,6 +39,7 @@ const BlogList = () => {
     <>
       <section>
         <div className="container">
+          {isLoading && <IsLoading />}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 ">
             {filterBlogs.slice(0, showBlogs).map((item) => (
               <BlogCard key={item._id} item={item} />

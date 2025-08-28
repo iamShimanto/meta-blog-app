@@ -3,8 +3,11 @@ import InputField from "./InputField";
 import TextAreaField from "./TextAreaField";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const NewBlog = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -26,7 +29,10 @@ const NewBlog = () => {
         "http://localhost:5000/blogs/add-blog",
         blogData
       );
-      console.log(res);
+      toast.success("Blog create successfully");
+      setTimeout(() => {
+        navigate("/blogs");
+      }, 3000);
     } catch (error) {
       console.log(error);
     }

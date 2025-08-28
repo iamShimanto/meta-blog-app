@@ -1,17 +1,35 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import IsLoading from "../../loading/IsLoading";
 
 const ManageBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("blogs.json")
-      .then((response) => response.json())
-      .then((data) => setBlogs(data))
-      .catch((error) => console.error("Error fetching blog data: " + error));
+    try {
+      (async () => {
+        const res = await axios.get("http://localhost:5000/blogs");
+        const data = await res.data.blog;
+        setBlogs(data);
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
-  console.log(blogs);
+  const handleDelete = async (id) => {
+    const res = await axios.delete(`http://localhost:5000/blogs/${id}`);
+    const result = await res.data;
+    console.log(result);
+    toast.success("Blog deleted successfully");
+    setTimeout(() => {
+      navigate("/blogs");
+    }, 2000);
+  };
+
   return (
     <section className="container max-w-7xl mx-auto px-4 py-24">
       <h2 className="text-2xl font-bold mb-6">Manage Your Blogs</h2>
@@ -70,7 +88,9 @@ const ManageBlog = () => {
                       Edit
                     </Link>
                     <Link className="bg-red-500 text-white px-2 py-1 hover:bg-red-600">
-                      <button>Delete</button>
+                      <button onClick={() => handleDelete(blog._id)}>
+                        Delete
+                      </button>
                     </Link>
                   </td>
                 </tr>

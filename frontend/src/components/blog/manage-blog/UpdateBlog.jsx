@@ -1,27 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../add-blog/InputField";
 import TextAreaField from "../add-blog/TextAreaField";
+import { useNavigate, useParams } from "react-router";
+import axios from "axios";
 
 const UpdateBlog = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null)
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const blogData = {
-      title: data.title,
-      description: data.description,
-      image: data.image,
+      title: data.title || blog.title,
+      description: data.description || blog.description,
+      image: data.image || blog.image,
       author: {
-        name: data.authorName,
-        image: data.authorImage,
+        name: data.authorName || blog.author.name,
+        image: data.authorImage || blog.author.image,
       },
     };
-
     console.log(blogData);
+
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/blogs/${id}`,
+        blogData
+      );
+      console.log(res.data);
+      setTimeout(() => {
+        navigate(`/manageblog`)
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+ useEffect(() => {
+     (async () => {
+      const res = await axios.get(`http://localhost:5000/blogs/${id}`)
+       const data = res.data.blog
+       setBlog(data)
+     })();
+ }, []);
+  console.log(blog)
+
+
   return (
     <div className="container max-w-7xl mx-auto px-4 py-24">
       <h2 className="text-2xl font-bold mb-6">Update Blog</h2>
@@ -36,7 +64,7 @@ const UpdateBlog = () => {
             label="Blog Title"
             id="title"
             type="text"
-            register={register("title", { required: true })}
+            register={register("title")}
             placeholder="Blog Title"
           />
 
@@ -45,7 +73,7 @@ const UpdateBlog = () => {
             label="Blog Description"
             id="description"
             type="text"
-            register={register("description", { required: true })}
+            register={register("description")}
             placeholder="Blog Description"
           />
 
@@ -54,20 +82,20 @@ const UpdateBlog = () => {
             id="authorName"
             type="text"
             placeholder="Author Name"
-            register={register("authorName", { required: true })}
+            register={register("authorName")}
           />
           <InputField
             label="Author Image URL"
             id="authorImage"
             type="url"
-            register={register("authorImage", { required: true })}
+            register={register("authorImage")}
             placeholder="Author Image URL"
           />
           <InputField
             label="Blog Image URL"
             id="image"
             type="url"
-            register={register("image", { required: true })}
+            register={register("image")}
             placeholder="Blog Image URL"
           />
 

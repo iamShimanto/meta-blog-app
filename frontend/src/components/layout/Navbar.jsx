@@ -15,7 +15,7 @@ const Navbar = () => {
     <>
       <nav className="px-11.25 py-4.5 flex items-center justify-between shadow-2xl sticky top-0 bg-slate-50 z-50">
         <div className="flex items-center gap-1.5">
-          <img src="images/logo.png" alt="logo" />
+          <img src="/images/logo.png" alt="logo" />
         </div>
         <div>
           <ul className="lg:flex items-center gap-7.5 lg:gap-5 xl:gap-7.5 uppercase text-base font-medium lg:font-normal xl:font-medium text-primary hidden">

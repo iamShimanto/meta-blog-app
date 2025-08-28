@@ -1,33 +1,51 @@
-import React from "react";
-
-import authorImg from "../../assets/authors/author-1.png";
-import blogImg from "../../assets/blogs/blog-1.png";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import IsLoading from "../loading/IsLoading";
 
 const BlogDetails = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    try {
+      (async () => {
+        setIsLoading(true);
+        const res = await axios.get(`http://localhost:5000/blogs/${id}`);
+        const data = res.data.blog;
+        setBlog(data);
+      })();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8">
       <div>
-        <h2 className="text-3xl font-bold mb-4">
-          Understanding the Most Important React Context API
-        </h2>
+        {isLoading && <IsLoading />}
+        <h2 className="text-3xl font-bold mb-4">{blog?.title}</h2>
         <div className="flex items-center mb-4">
-          <img src={authorImg} alt="" className="w-10 h-10 rounded-full mr-3" />
+          <img
+            src={blog?.author?.image}
+            alt=""
+            className="w-10 h-10 rounded-full mr-3"
+          />
           <div>
-            <p className="text-lg font-medium">Tracey Wilson</p>
-            <p className="text-gray-500">9/1/2024</p>
+            <p className="text-lg font-medium">{blog?.author?.name}</p>
+            <p className="text-gray-500">{blog?.date}</p>
           </div>
         </div>
         <img
-          src={blogImg}
+          src={blog?.image}
           alt=""
           className="w-full md:h-[580px] rounded-md object-cover mb-4"
         />
         <div className="space-y-4">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-            facere numquam odit asperiores, aliquam corrupti a dolores veniam,
-            ut ipsum nam est ullam tempore itaque ex possimus nisi neque quasi.
-          </p>
+          <p>{blog?.description}</p>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab rem
             porro numquam laborum? Itaque beatae odio officia pariatur, labore,
