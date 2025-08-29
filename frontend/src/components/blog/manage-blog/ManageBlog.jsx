@@ -11,7 +11,9 @@ const ManageBlog = () => {
   useEffect(() => {
     try {
       (async () => {
-        const res = await axios.get("http://localhost:5000/blogs");
+        const res = await axios.get(
+          "https://meta-blog-backend-weld.vercel.app/blogs"
+        );
         const data = await res.data.blog;
         setBlogs(data);
       })();
@@ -21,7 +23,9 @@ const ManageBlog = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const res = await axios.delete(`http://localhost:5000/blogs/${id}`);
+    const res = await axios.delete(
+      `https://meta-blog-backend-weld.vercel.app/blogs/${id}`
+    );
     const result = await res.data;
     console.log(result);
     toast.success("Blog deleted successfully");

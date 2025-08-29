@@ -11,7 +11,9 @@ const BlogDetails = () => {
   useEffect(() => {
     try {
       (async () => {
-        const res = await axios.get(`http://localhost:5000/blogs/${id}`);
+        const res = await axios.get(
+          `https://meta-blog-backend-weld.vercel.app/blogs/${id}`
+        );
         const data = res.data.blog;
         setBlog(data);
         setIsLoading(false);
@@ -22,7 +24,7 @@ const BlogDetails = () => {
   }, []);
 
   if (isLoading) {
-    return <IsLoading />
+    return <IsLoading />;
   }
 
   return (

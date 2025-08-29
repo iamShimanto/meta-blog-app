@@ -26,7 +26,7 @@ const NewBlog = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/blogs/add-blog",
+        "https://meta-blog-backend-weld.vercel.app/blogs/add-blog",
         blogData
       );
       toast.success("Blog create successfully");

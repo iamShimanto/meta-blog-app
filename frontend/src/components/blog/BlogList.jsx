@@ -8,20 +8,21 @@ const BlogList = () => {
   const [blogData, setBlogData] = useState([]);
   const [showBlogs, setShowBlogs] = useState(6);
   // const [searchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const { searchTerm, setsearchTerm } = useContext(BlogContext);
-
 
   useEffect(() => {
     try {
       (async () => {
-        const res = await axios.get("http://localhost:5000/blogs");
+        const res = await axios.get(
+          "https://meta-blog-backend-weld.vercel.app/blogs"
+        );
         const data = res.data.blog;
         setBlogData(data);
         setIsLoading(false);
       })();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }, []);
 
@@ -37,7 +38,7 @@ const BlogList = () => {
   };
 
   if (isLoading) {
-    return <IsLoading />
+    return <IsLoading />;
   }
 
   return (
@@ -50,7 +51,12 @@ const BlogList = () => {
             ))}
           </div>
           {showBlogs < filterBlogs.length && (
-            <button onClick={handleMoreBlog} className="px-4 py-2 bg-brand rounded-lg text-lg font-semibold bg-black text-white cursor-pointer hover:bg-brand/80 duration-300 my-5 w-fit flex justify-center mx-auto">Show More</button>
+            <button
+              onClick={handleMoreBlog}
+              className="px-4 py-2 bg-brand rounded-lg text-lg font-semibold bg-black text-white cursor-pointer hover:bg-brand/80 duration-300 my-5 w-fit flex justify-center mx-auto"
+            >
+              Show More
+            </button>
           )}
         </div>
       </section>
