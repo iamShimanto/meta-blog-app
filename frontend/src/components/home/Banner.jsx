@@ -7,25 +7,25 @@ const Banner = () => {
       <section className="py-17">
         <div className="container">
           <div className="heading">
-            <h1 className="text-center text-4xl font-semibold text-black leading-10">
+            <h1 className="text-center text-4xl font-semibold leading-10">
               Meta Blog
             </h1>
             <div className="flex justify-center items-center flex-wrap gap-4 mt-3.5 mb-8">
               <Link
                 to="/"
-                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal text-black hover:text-primary duration-300 leading-6"
+                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal hover:text-primary duration-300 leading-6"
               >
                 Home
               </Link>
               <Link
                 to="/newblog"
-                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal text-black hover:text-primary duration-300 leading-6"
+                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal hover:text-primary duration-300 leading-6"
               >
                 Add New Blog
               </Link>
               <Link
                 to="/manageblog"
-                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal text-black hover:text-primary duration-300 leading-6"
+                className="px-2.5 py-1 bg-[rgba(75,107,251,0.1)] rounded-full text-base font-normal hover:text-primary duration-300 leading-6"
               >
                 Manage Blog
               </Link>

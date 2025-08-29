@@ -7,21 +7,23 @@ import axios from "axios";
 
 const UpdateBlog = () => {
   const { id } = useParams();
-  const [blog, setBlog] = useState(null)
-  const navigate = useNavigate()
+  // const [blog, setBlog] = useState(null)
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
+    setValue,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
     const blogData = {
-      title: data.title || blog.title,
-      description: data.description || blog.description,
-      image: data.image || blog.image,
+      title: data.title,
+      description: data.description,
+      image: data.image,
       author: {
-        name: data.authorName || blog.author.name,
-        image: data.authorImage || blog.author.image,
+        name: data.authorName,
+        image: data.authorImage,
       },
     };
     console.log(blogData);
@@ -32,23 +34,29 @@ const UpdateBlog = () => {
         blogData
       );
       console.log(res.data);
+      reset();
       setTimeout(() => {
-        navigate(`/manageblog`)
+        navigate(`/manageblog`);
       }, 2000);
     } catch (error) {
       console.log(error);
     }
   };
 
- useEffect(() => {
-     (async () => {
-      const res = await axios.get(`http://localhost:5000/blogs/${id}`)
-       const data = res.data.blog
-       setBlog(data)
-     })();
- }, []);
-  console.log(blog)
-
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get(`http://localhost:5000/blogs/${id}`);
+      const data = res.data.blog;
+      //  setBlog(data)
+      console.log(data);
+      setValue("title", data?.title);
+      setValue("description", data?.description);
+      setValue("authorName", data?.author?.name);
+      setValue("authorImage", data?.author?.image);
+      setValue("image", data?.image);
+    })();
+  }, []);
+  // console.log(blog)
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-24">
@@ -102,7 +110,7 @@ const UpdateBlog = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-secondary text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full text-white py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-600/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Update
             </button>

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router";
 import { FaSearch } from "react-icons/fa";
+import { ThemeContext } from "../../context/ThemeContext";
+import { BlogContext } from "../../context/BlogContext";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const [dark, setDark] = useState(false);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { searchTerm, setsearchTerm } = useContext(BlogContext);
+
 
   const handleClick = () => {
     setShow(!show);
@@ -64,6 +68,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-1.5">
           <div className="relative">
             <input
+              onChange={(e)=> setsearchTerm(e.target.value)}
               type="text"
               placeholder="Search..."
               className="border border-primary px-2 h-10 rounded-2xl focus:outline-brand duration-300"
@@ -73,15 +78,15 @@ const Navbar = () => {
             </button>
           </div>
           <button
-            onClick={() => setDark(!dark)}
+            onClick={() => setDarkMode(!darkMode)}
             className="relative cursor-pointer w-20 h-10 rounded-full p-1 transition-colors duration-500 bg-gradient-to-r from-yellow-300 to-orange-400 dark:from-gray-700 dark:to-gray-900"
           >
             <div
               className={`w-8 h-8 rounded-full shadow-lg transform transition-transform duration-500 bg-white dark:bg-gray-800 flex items-center justify-center ${
-                dark ? "translate-x-10" : "translate-x-0"
+                darkMode ? "translate-x-10" : "translate-x-0"
               }`}
             >
-              {dark ? (
+              {darkMode ? (
                 <span className="text-yellow-400">🌙</span>
               ) : (
                 <span className="text-yellow-500">☀️</span>
@@ -149,15 +154,15 @@ const Navbar = () => {
                   </button>
                 </div>
                 <button
-                  onClick={() => setDark(!dark)}
+                  onClick={() => setDarkMode(!darkMode)}
                   className="relative cursor-pointer w-20 h-10 rounded-full p-1 transition-colors duration-500 bg-gradient-to-r from-yellow-300 to-orange-400 dark:from-gray-700 dark:to-gray-900"
                 >
                   <div
                     className={`w-8 h-8 rounded-full shadow-lg transform transition-transform duration-500 bg-white dark:bg-gray-800 flex items-center justify-center ${
-                      dark ? "translate-x-10" : "translate-x-0"
+                      darkMode ? "translate-x-10" : "translate-x-0"
                     }`}
                   >
-                    {dark ? (
+                    {darkMode ? (
                       <span className="text-yellow-400">🌙</span>
                     ) : (
                       <span className="text-yellow-500">☀️</span>

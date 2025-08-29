@@ -37,7 +37,7 @@ const ManageBlog = () => {
         {blogs.length > 0 ? (
           <table className="w-full text-left table-auto min-w-max">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-gray-600">
                 <th className="p-4 border-b border-slate-600 ">
                   <p className="text-sm font-normal leading-none ">Title</p>
                 </th>

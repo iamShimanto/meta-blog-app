@@ -6,27 +6,28 @@ import IsLoading from "../loading/IsLoading";
 const BlogDetails = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
       (async () => {
-        setIsLoading(true);
         const res = await axios.get(`http://localhost:5000/blogs/${id}`);
         const data = res.data.blog;
         setBlog(data);
+        setIsLoading(false);
       })();
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsLoading(false);
     }
   }, []);
+
+  if (isLoading) {
+    return <IsLoading />
+  }
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8">
       <div>
-        {isLoading && <IsLoading />}
         <h2 className="text-3xl font-bold mb-4">{blog?.title}</h2>
         <div className="flex items-center mb-4">
           <img

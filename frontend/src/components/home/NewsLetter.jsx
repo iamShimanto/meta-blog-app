@@ -11,7 +11,7 @@ const NewsLetter = () => {
           <p className="text-lg font-normal text-white leading-7 my-3">
             Get the latest news, updates, and offers straight to your inbox
           </p>
-          <button className="px-8 py-2.5 bg-white text-black rounded-full text-base font-bold leading-6 cursor-pointer hover:bg-primary hover:text-white duration-300">
+          <button className="px-8 py-2.5 bg-white text-black rounded-full text-base font-bold leading-6 cursor-pointer hover:bg-primary duration-300">
             Sign up
           </button>
         </div>

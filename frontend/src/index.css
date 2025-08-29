@@ -6,13 +6,18 @@
 }
 @theme{
   --color-brand : #4B6BFB;
-  --color-primary : #1F2937;
+  /* --color-primary : #1F2937;
   --color-secondary : #6B7280;
-  --color-navColor : #374151;
+  --color-navColor : #374151; */
 }
 
 
 
 body {
   font-family: "Work Sans", sans-serif;
+}
+
+
+.darkMode{
+  @apply bg-gray-900 text-white
 }
